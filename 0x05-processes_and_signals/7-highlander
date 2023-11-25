@@ -4,7 +4,7 @@
 #To infinity and beyond indefinitely
 #With a sleep 2 in between each iteration
 #I am invincible!!! when receiving a SIGTERM signal
-traps sigtrap 15
+trap sigtrap 15
 sigtrap()
 {
 	echo "I am invincible!!!"
