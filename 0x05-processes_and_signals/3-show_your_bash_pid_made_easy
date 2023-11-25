@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#A Bash script that displays the PID, along with the process name, of processes whose name contain the word bash. No use of ps
+script_pid=$$
+#gets the PID of the scipt
+
+ps aux | awk -v script_pid="$script_pid" '$11 ~ /bash/ && $2 != script_pid {print $2, $11}'
+# awk filter the script
