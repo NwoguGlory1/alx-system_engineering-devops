@@ -8,6 +8,7 @@
 #Home directory path for the user. Use while loop
 
 while IFS=: read -r username userid homedir; do
+#set Internal Field Separator to colon. then read 3fields from each line(username, userid, homedir) and store them in the corresponding variables.
 	echo "$username:$userid:$homedir"
 done < "/etc/passwd"
 
