@@ -8,8 +8,5 @@
 #See example
 #You must use awk
 #You are not allowed to use while, for, until and cut
-#Download and commit the apache-access.log file along with your answers files
+
 awk -F' ' '{echo "$1, $9"}' apache-access.log
-#awk scans through apache-access.log to print the input field which is from $1 to $9 seperated by space as set by the field seperator, F
-#and then prints 1 & 9 which stands for IP address of visitor & HTTP status code.
-#Each field input represents something and awk dispalys the one needed.
