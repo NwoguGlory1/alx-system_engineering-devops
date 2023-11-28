@@ -1,2 +1,2 @@
 #!/usr/bin/env ruby
-puts ARGV[0].scan(/^[a-z]{4,7}$/).join
+puts ARGV[0].scan(/^\w\w\w{1,4}\w$/).join
