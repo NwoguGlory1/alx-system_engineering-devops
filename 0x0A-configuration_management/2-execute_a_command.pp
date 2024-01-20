@@ -2,6 +2,6 @@
 # called killmenow
 
 exec { 'pkill':
-  command => 'pkill  killmenow',
+  command => '/usr/bin/pkill  killmenow',
   provider => 'shell',
 }
