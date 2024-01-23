@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Script to configure my SSH to use  private key ~/.ssh/school
+# And refuse to authenticate using a password
+
+Host 100.26.214.114
+	HostName 100.26.214.114
+	User ubuntu
+	IdentityFile ~/.ssh/school
+	PreferredAuthentications privatekey
+	PasswordAuthentication no
