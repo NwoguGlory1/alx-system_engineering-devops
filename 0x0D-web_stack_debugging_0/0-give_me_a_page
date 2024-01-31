@@ -1,2 +1,5 @@
 #!/usr/bin/env bash
-""" """
+# Debugging to get the Apache to run the container to return Hello Holberton
+
+echo "ServerName localhost" >> /etc/apache2/apache2.conf
+sudo /etc/init.d/apache2 start
