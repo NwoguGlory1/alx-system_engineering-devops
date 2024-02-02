@@ -2,7 +2,7 @@
 #  A Script that configures a new Ubuntu machine to Perform a 301-redirection
 sudo apt-get update -y
 # installs the Nginx web server.
-sudo apt-get install -y nginx
+sudo apt-get install  nginx -y
 
 # sets the content of the index.html file to "Hello World!"
 echo "Hello World!" | sudo tee /var/www/html/index.html
@@ -12,6 +12,7 @@ redirect_url="https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4"
 string_to_replace="server_name _;\n\trewrite ^\/redirect_me $redirect_url 301;"
 sudo sed -i "s/server_name _;/$string_to_replace/" /etc/nginx/sites-enabled/default
 
+sudo ln -s /etc/nginx/sites-available/redirect/etc/nginx/sites-enabled/
 # Test Nginx configuration and reload
 sudo nginx -t
 sudo service nginx start
