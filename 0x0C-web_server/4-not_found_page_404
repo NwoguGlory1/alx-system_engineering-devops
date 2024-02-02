@@ -11,9 +11,8 @@ sudo apt-get install -y nginx
 echo "Hello World!" | sudo tee /var/www/html/index.html
 
 # Configure a new server block for 301 redirection
-# redirect_url="https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4"
-# new_string="server_name _;\n\trewrite ^\/redirect_me $redirect_url 301;"
-# sudo sed -i "s/server_name _;/$new_string/" /etc/nginx/sites-enabled/default
+old_string="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 301;"
+sudo sed -i "s/server_name _;/$old_string/" /etc/nginx/sites-enabled/default
 
 # Using sed to configure an error page
 new_string="listen 80 default_server;\n\terror_page 404 \/404.html;\n\tlocation = \/404.html {\n\t\troot \/var\/www\/html;\n\t\tinternal;\n\t}"
