@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #  A Script that configures a new Ubuntu machine to Perform a 301-redirection
-sudo apt-get update
+sudo apt-get update -y
 # installs the Nginx web server.
 sudo apt-get install -y nginx
 
@@ -14,4 +14,4 @@ sudo sed -i "s/server_name _;/$string_to_replace/" /etc/nginx/sites-enabled/defa
 
 # Test Nginx configuration and reload
 sudo nginx -t
-sudo service nginx restart
+sudo service nginx start
