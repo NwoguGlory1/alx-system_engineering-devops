@@ -19,10 +19,10 @@ backend besthor_backend
         server 176572-web-01 54.165.168.252:80 check
         server 176572-web-02 34.237.91.136:80 check
 "
-echo "$Haproxy_config" | sudo tee -a /etc/haproxy/haproxy.cfg
+echo "$Haproxy_config" >> /etc/haproxy/haproxy.cfg
 
 # Enable haproxy to be started by init script
-echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
+echo 'ENABLED=1'  sudo tee -a /etc/default/haproxy
 
 
 # Test Haproxy configuration and start
