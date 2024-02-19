@@ -16,7 +16,7 @@ if __name__ == "__main__":
         response = requests.get(url)
         todo_item = response.json()
 
-        EMPLOYEE_NAME = todo_item[0]get['name']
+        EMPLOYEE_NAME = todo_item[0].get['name', 'Unknown']
         TOTAL_NUMBER_OF_TASKS = len(todo_item)
         NUMBER_OF_DONE_TASKS = sum(task['completed'] for task in todo_item)
 
