@@ -1,32 +1,40 @@
 #!/usr/bin/python3
-""" Script that uses REST API and takes ID as arg to return TODO info """
+""" Gather data from an API  """
 
 if __name__ == "__main__":
-    """ ensures that code will not run if imported """
-    import sys
-    import requests
+    from requests import get
+    from sys import argv, exit
 
     try:
-        if len(sys.argv) != 2:
-            raise ValueError("Usage: python script.py <employee_id>")
+        id = argv[1]
+        is_int = int(id)
+    except ValueError:
+        exit()
 
-        employe_id = int(sys.argv[1])
+    url_user = "https://jsonplaceholder.typicode.com/users?id=" + id
+    url_todo = "https://jsonplaceholder.typicode.com/todos?userId=" + id
 
-        url = f'https://jsonplaceholder.typicode.com/todos?userId={employe_id}'
-        response = requests.get(url)
-        todo_item = response.json()
+    r_user = get(url_user)
+    r_todo = get(url_todo)
 
-        EMPLOYEE_NAME = todo_item[0].get['name', 'Unknown']
-        TOTAL_NUMBER_OF_TASKS = len(todo_item)
-        NUMBER_OF_DONE_TASKS = sum(task['completed'] for task in todo_item)
+    try:
+        js_user = r_user.json()
+        js_todo = r_todo.json()
 
-        print("Employee {} is done with tasks ({}/{}):"
-             .format(EMPLOYEE_NAME, NUMBER_OF_DONE_TASKS, TOTAL_NUMBER_OF_TASKS))
+    except ValueError:
+        print("Not a valid JSON")
 
-        for task in todo_item:
-            TASK_TITLE = task.get('title')
-            if task.get('completed'):
-                print("\t{}".format(TASK_TITLE))
+    if js_user and js_todo:
+        EMPLOYEE_NAME = js_user[0].get('name')
+        TOTAL_NUMBER_OF_TASKS = len(js_todo)
+        NUMBER_OF_DONE_TASKS = sum(item.get("completed")
+                                   for item in js_todo if item)
 
-    except Exception as e:
-        print(f"Error: {e}")
+        print("Employee {} is done with tasks({}/{}):"
+              .format(EMPLOYEE_NAME,
+                      NUMBER_OF_DONE_TASKS,
+                      TOTAL_NUMBER_OF_TASKS))
+        for todo in js_todo:
+            TASK_TITLE = todo.get('title')
+            if todo.get("completed"):
+                print("\t {}".format(TASK_TITLE))
