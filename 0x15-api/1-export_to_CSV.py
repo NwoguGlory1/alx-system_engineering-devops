@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """ Gather data from an API  """
-import csv
-import sys
 
 if __name__ == "__main__":
+    import csv
     from requests import get
     from sys import argv, exit
+    import sys
 
     try:
         employ_id = argv[1]
