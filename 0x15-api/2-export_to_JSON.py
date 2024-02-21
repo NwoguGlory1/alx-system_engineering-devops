@@ -4,6 +4,7 @@
 if __name__ == "__main__":
     from requests import get
     from sys import argv, exit
+    import json
 
     try:
         id = argv[1]
@@ -19,6 +20,8 @@ if __name__ == "__main__":
     r_user = get(url_user)
     r_todo = get(url_todo)
 # uses get fxn to make requests to the constructed urls, store in a variable
+# data received from get is in json format, we use
+# .json() from request module t parse it to a string
 
     try:
         js_user = r_user.json()
@@ -37,11 +40,15 @@ if __name__ == "__main__":
             TASK_TITLE = todo.get('title')
 
             dic = {"task": TASK_TITLE,
-                "completed": TASK_COMPLETED_STATUS,
-                "username": USERNAME}
+                   "completed": TASK_COMPLETED_STATUS,
+                   "username": USERNAME}
             js_list.append(dic)
 
             data = {USER_ID: js_list}
 
             with open(id + '.json', 'w', newline='') as jsonfile:
                 json.dump(data, jsonfile)
+# with open(json_file_path, 'w') as json_file: is the syntax
+# id + '.json represents json_file_path
+# id holds the value passed as cmdline arg, .json is appended to it
+# to form the path 2.json
