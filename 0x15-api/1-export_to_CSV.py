@@ -50,4 +50,4 @@ if __name__ == "__main__":
         writer.writerows(data)
 
     for record in data[1:]:
-        print(','.join(map(str, record)))
+        print(','.join(map(lambda x: f'"{x}"', record)))
