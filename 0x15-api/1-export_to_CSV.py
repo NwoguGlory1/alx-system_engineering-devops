@@ -42,7 +42,7 @@ if __name__ == "__main__":
             TASK_COMPLETED_STATUS = todo.get("completed")
 
             TASK_COMPLETED_STATUS = (str(TASK_COMPLETED_STATUS)
-                                    .lower() == 'true')
+                                     .lower() == 'true')
 
             data.append([USER_ID, USERNAME, TASK_COMPLETED_STATUS, TASK_TITLE])
 
@@ -50,5 +50,5 @@ if __name__ == "__main__":
 
     with open(csv_file_name, mode='w', newline='') as file:
         writer = csv.writer(file, delimiter=',',
-                        quotechar='"', quoting=csv.QUOTE_ALL)
+                            quotechar='"', quoting=csv.QUOTE_ALL)
         writer.writerows(data[1:])
