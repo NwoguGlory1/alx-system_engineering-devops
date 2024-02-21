@@ -12,15 +12,17 @@ if __name__ == "__main__":
         is_int = int(employ_id)
     except ValueError:
         exit()
-# retrieves the value of cmdline arg,converts it to int, if any error, it exits
+    # retrieves the value of commdline arg, converts it to int,
+    # if any error, it exits
 
     url_user = "https://jsonplaceholder.typicode.com/users?id=" + employ_id
     url_todo = "https://jsonplaceholder.typicode.com/todos?userId=" + employ_id
-# amends the api url to get the user info & the associated todo info
+    # amends the api url to get the user info & the associated todo info
 
     r_user = get(url_user)
     r_todo = get(url_todo)
-# uses get fxn to make requests to the constructed urls, store in a variable
+    # uses get fxn to make requests to the constructed urls,
+    # store in a variable
 
     try:
         js_user = r_user.json()
@@ -47,6 +49,6 @@ if __name__ == "__main__":
     csv_file_name = f"{USER_ID}.csv"
 
     with open(csv_file_name, mode='w', newline='') as file:
-    writer = csv.writer(file, delimiter=',',
-            quotechar='"', quoting=csv.QUOTE_ALL)
-    writer.writerows(data[1:])
+        writer = csv.writer(file, delimiter=',',
+                        quotechar='"', quoting=csv.QUOTE_ALL)
+        writer.writerows(data[1:])
