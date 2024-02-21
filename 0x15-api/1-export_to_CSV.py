@@ -39,13 +39,16 @@ if __name__ == "__main__":
             TASK_TITLE = todo.get('title')
             TASK_COMPLETED_STATUS = todo.get("completed")
 
-            TASK_COMPLETED_STATUS = str(TASK_COMPLETED_STATUS)
-            .lower() == 'true'
+            TASK_COMPLETED_STATUS = (str(TASK_COMPLETED_STATUS)
+                                    .lower() == 'true')
 
             data.append([USER_ID, USERNAME, TASK_COMPLETED_STATUS, TASK_TITLE])
 
     csv_file_name = f"{USER_ID}.csv"
 
     with open(csv_file_name, mode='w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerows(data[1:])
+         writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
+         writer.writerows(data[1:])
+
+#    for record in data[1:]:
+       # print(','.join(map(lambda x: f'"{x}"', record)))
