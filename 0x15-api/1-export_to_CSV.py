@@ -47,8 +47,6 @@ if __name__ == "__main__":
     csv_file_name = f"{USER_ID}.csv"
 
     with open(csv_file_name, mode='w', newline='') as file:
-         writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
-         writer.writerows(data[1:])
-
-#    for record in data[1:]:
-       # print(','.join(map(lambda x: f'"{x}"', record)))
+    writer = csv.writer(file, delimiter=',',
+            quotechar='"', quoting=csv.QUOTE_ALL)
+    writer.writerows(data[1:])
