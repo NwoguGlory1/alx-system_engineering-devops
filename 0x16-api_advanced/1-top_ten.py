@@ -15,10 +15,10 @@ def top_ten(subreddit):
     - subreddit (str): The name of the subreddit
 
     Returns:
-    - The the first 10 hot posts or None if the subreddit is invalid.
+    - The first 10 hot posts or None if the subreddit is invalid.
     """
-    url = 'https://www.reddit.com/r/{}/hot.json?show="all"&limit=10'
-    .format(subreddit)
+    url = 'https://www.reddit.com/r/{}/hot.json?show="all"&limit=10'.
+    format(subreddit)
 
     headers = {"User-Agent": "My-User-Agent"}
 
