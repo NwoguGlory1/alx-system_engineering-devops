@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 Defines a function for retrieving
-the titles of the first 10 hot posts listed 
+the titles of the first 10 hot posts listed
 for a given subreddit.
 """
 import requests
@@ -29,4 +29,3 @@ def top_ten(subreddit):
             print(post['data']['title'])
     except KeyError:
         print("None")
-
