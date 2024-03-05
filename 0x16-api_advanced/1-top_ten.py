@@ -17,15 +17,15 @@ def top_ten(subreddit):
     Returns:
     - The first 10 hot posts or None if the subreddit is invalid.
     """
-    url = 'https://www.reddit.com/r/{}/hot.json?show="all"&limit=10'.
-    format(subreddit)
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
 
     headers = {"User-Agent": "My-User-Agent"}
 
     response = requests.get(url, headers=headers, allow_redirects=False)
-    try:
-        top_ten = response.json()['data']['children']
-        for post in top_ten:
-            print(post['data']['title'])
-    except KeyError:
+    if response.status_code >= 300:
         print("None")
+    else:
+        data = response.json()
+        posts = data.get("data").get("children")
+        for post in posts:
+            print(post.get("data").get("title"))
