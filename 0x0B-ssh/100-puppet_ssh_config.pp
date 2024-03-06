@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# edit configuration file
+# edit configuration automatically, across multiple systems
 
 file_line { 'Turn off passwd':
   ensure  => present,

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+mysqldump -u holberton_user -p projectcorrection280hbtn --tyrell_corp > backup.sql
+tar -czvf day-month-year.tar.gz backup.sql

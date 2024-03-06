@@ -10,12 +10,15 @@ if __name__ == "__main__":
         is_int = int(id)
     except ValueError:
         exit()
+# retrieves the value of cmdline arg,converts it to int, if any error, it exits
 
     url_user = "https://jsonplaceholder.typicode.com/users?id=" + id
     url_todo = "https://jsonplaceholder.typicode.com/todos?userId=" + id
+# amends the api url to get the user info & the associated todo info
 
     r_user = get(url_user)
     r_todo = get(url_todo)
+# uses get fxn to make requests to the constructed urls, store in a variable
 
     try:
         js_user = r_user.json()
